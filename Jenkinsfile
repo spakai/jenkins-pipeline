@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "gnschenker/jenkins-docker-test"
+        registry = "spakai"
         DOCKER_PWD = credentials('docker-login-pwd')
     }
     agent {
@@ -28,7 +28,7 @@ pipeline {
         stage("Build & Push Docker image") {
             steps {
                 sh 'docker image build -t $registry:$BUILD_NUMBER .'
-                sh 'docker login -u spakai -p 3Mac1book7!'
+                sh 'docker login -u spakai -p DOCKER_PWD'
                 sh 'docker image push $registry:$BUILD_NUMBER'
                 sh "docker image rm $registry:$BUILD_NUMBER"
             }
