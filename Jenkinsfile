@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "spakai"
+        registry = "spakai/pipeline"
         DOCKER_PWD = credentials('docker-login-pwd')
     }
     agent {
